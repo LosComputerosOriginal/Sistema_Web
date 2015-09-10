@@ -1,6 +1,6 @@
 <%@ page contentType="text/html" language="java" import="java.sql.*"%>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
-<jsp:useBean id="con" class="conexao.Conexao"/>  
+<jsp:useBean id="con" class="services.VeiculoServices"/>  
 <html>  
 <head>  
 <title>Untitled Document</title>  

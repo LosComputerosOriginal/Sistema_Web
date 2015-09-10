@@ -1,7 +1,7 @@
 <%@page import="java.io.PrintStream"%>
 <%@page import="javax.sound.midi.SysexMessage"%>
 <%@ page contentType="text/html" language="java" import="java.sql.*"%>  
-<jsp:useBean id="con" class="conexao.Conexao"/>  
+<jsp:useBean id="con" class="services.VeiculoServices"/>  
   
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
 <html>  
@@ -11,12 +11,18 @@
 </head>  
   
 <body>  
+
+
+
 <form name="form1" method="post" action="veiculos.jsp">  
   
 <p><strong>Tabela Veiculos </strong></p>  
 <table border=1 cellspacing=0 cellpadding=0 >  
   
    <tr>  
+   
+   
+   
    <td width=100><strong>  
       Cod Veiculo 
    </strong></td>      
@@ -42,16 +48,19 @@
    </tr>  
   
   
+
+  
+ 
 <%      
    try {  
   
-      con.setMarca(request.getParameter("marcaField"));  
-      con.setModelo(request.getParameter("modeloField"));
-      con.setAno(Integer.parseInt(request.getParameter("anoField")));
-      con.setPlaca(request.getParameter("placaField"));
-      con.setValorcusto(Float.parseFloat(request.getParameter("valorcustoField")));
-      con.setValorvenda(Float.parseFloat(request.getParameter("valorvendaField")));
-      	con.inserirDados();  
+     
+      con.inserir(request.getParameter("placaField"), 
+    		  request.getParameter("modeloField"), 
+    		  Integer.parseInt(request.getParameter("anoField")), 
+    		  Float.parseFloat(request.getParameter("valorcustoField")), 
+    		  Float.parseFloat(request.getParameter("valorvendaField")), 
+    		  request.getParameter("marcaField"));	
      
 	
                  
