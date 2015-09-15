@@ -1,6 +1,7 @@
+
 <%@ page contentType="text/html"%>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
-  
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
 <html>  
 <head>  
 <title>Tabela Veiculos</title>  
@@ -99,18 +100,37 @@ String valorvenda = request.getParameter("valorvenda");
 
 %>  
   
+  
 <body>  
+
+
+
+
+
+
+
+
 <form name="cadastro" method="get" >  
   
 <table width="472" border="0" align="center">  
   <tr>  
-    <td width="458" height="70" bgcolor="#6699FF"><p align="center" class="style3"> Cadastro Veiculos </p>  
+    <td width="458" height="70" bgcolor="#6699FF"><p align="left" class="style3"> Cadastro Veiculos </p>  
     </td>  
   </tr>  
   <tr>  
     <td height="177" bgcolor="#6699FF" align="center"><p>
      <strong>Marca :</strong>  
-       <input name="marcaField" type="text" id="marcaField" size="40" value="<%=(marca==null)?"":marca%>"> </p>  
+        
+        <jsp:useBean id="obj" class="dao.DaoMarca" scope="page"/>
+
+<select>
+    <c:forEach var="item" items="${obj.getItems()}">
+     <option>${item.descricao}</option>
+    </c:forEach>
+</select>
+
+       
+         
          <strong>Modelo :</strong>  
        <input name="modeloField" type="text" id="modeloField" size="40" value="<%=(modelo==null)?"":modelo%>">
        <p><strong>Placa:</strong> 
@@ -123,7 +143,7 @@ String valorvenda = request.getParameter("valorvenda");
         <input name="valorvendaField" type="text" id="valorvendaField" size="8" value="<%=(valorvenda==null)?"":valorvenda%>"> 
           </p>
   
-         </p>      
+              
    </td>  
   </tr>  
   <tr>  

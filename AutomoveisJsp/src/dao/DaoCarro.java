@@ -13,7 +13,9 @@ public class DaoCarro {
 	
 		  try {  
 		      set =  MysqlConnect.db.query("select * from veiculos"); 
-		      }   
+		      
+		  
+		  }   
 		      catch (SQLException e){  
 		         e.printStackTrace();  
 		      }  
