@@ -2,10 +2,28 @@
 <%@ page contentType="text/html"%>  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
+
 <html>  
 <head>  
 <title>Tabela Veiculos</title>  
   
+  <script type = "text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+  </script>
+  
+  
+  <script type="text/javascript">
+  function carregaModelos(){
+	  var marca = $("#marcaModelo").val();
+	  $.ajax({
+		  url:"/ModeloMarca"
+	  }).done(function(data){
+		console.log(data)
+		  
+	  });
+  }
+  
+  
+  </script>
   
 <script>  
   
@@ -123,7 +141,8 @@ String valorvenda = request.getParameter("valorvenda");
         
         <jsp:useBean id="obj" class="dao.DaoMarca" scope="page"/>
 
-<select>
+
+<select id = "marcaSelect" onChange = "carregaModelos()">
     <c:forEach var="item" items="${obj.getItems()}">
      <option>${item.descricao}</option>
     </c:forEach>
@@ -132,7 +151,13 @@ String valorvenda = request.getParameter("valorvenda");
        
          
          <strong>Modelo :</strong>  
-       <input name="modeloField" type="text" id="modeloField" size="40" value="<%=(modelo==null)?"":modelo%>">
+       <select>
+    <c:forEach var="item" items="${obj.getItems()}">
+     <option>${item.descricao}</option>
+    </c:forEach>
+</select>
+       
+       
        <p><strong>Placa:</strong> 
         <input name="placaField" type="text" id="placaField" size="4" value="<%=(placa==null)?"":placa%>">
          <strong>Ano:</strong>              
