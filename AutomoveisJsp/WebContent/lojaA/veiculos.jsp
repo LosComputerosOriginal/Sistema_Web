@@ -11,19 +11,33 @@
   </script>
   
   
+ 
+  <%--Função Java script que recebe o valor dos selects, passa para o servlet(ModeloMarca), e usa os 
+  dados recebidos para popular outro select 
+  
+   --%> 
   <script type="text/javascript">
   function carregaModelos(){
-	  var marca = $("#marcaModelo").val();
+	  <%--Variável que recebe a chave primária do valor selecionado no select--%> 
+	  var marca = $( "#marcaSelect" ).val();
+	  console.log(marca)
+	  
+	  <%--Passa pelo get para o servlet a variável marca e recebe os dados para prencher o outro select--%>
+	  
 	  $.ajax({
-		  url:"/ModeloMarca"
+		  url:"http://localhost:8080/AutomoveisJsp/ModeloMarca?marca=" + marca
 	  }).done(function(data){
-		console.log(data)
-		  
+		console.log(data);
+		$( "#modeloSelect" ).children().remove();
+		 $( "#modeloSelect" ).append(data); 
 	  });
   }
   
   
   </script>
+  
+  
+  
   
 <script>  
   
@@ -106,12 +120,13 @@ function enviar(par){
 //String sexo = request.getParameter("sexo");  
 String status = request.getParameter("status");
 
-String marca = request.getParameter("marca");
+
 String modelo = request.getParameter("modelo");
 String placa = request.getParameter("placa");
 String ano = request.getParameter("ano");
 String valorcusto = request.getParameter("valorcusto");
 String valorvenda = request.getParameter("valorvenda");
+
 //int ano = Integer.parseInt((String)request.getParameter("ano"));
 //Float valorcusto = Float.parseFloat((String)request.getParameter("valorcusto"));
 //Float valorvenda = Float.parseFloat((String)request.getParameter("valorvenda"));
@@ -142,19 +157,20 @@ String valorvenda = request.getParameter("valorvenda");
         <jsp:useBean id="obj" class="dao.DaoMarca" scope="page"/>
 
 
-<select id = "marcaSelect" onChange = "carregaModelos()">
+<select id = "marcaSelect" name = "marca" onChange = "carregaModelos()">
+    <option>Selecione a marca</option>
     <c:forEach var="item" items="${obj.getItems()}">
-     <option>${item.descricao}</option>
+     
+     <option value="${item.id}">${item.descricao}</option>
+   		
     </c:forEach>
 </select>
 
        
          
          <strong>Modelo :</strong>  
-       <select>
-    <c:forEach var="item" items="${obj.getItems()}">
-     <option>${item.descricao}</option>
-    </c:forEach>
+       <select id = "modeloSelect" name = "modelo">
+    <option>Selecione a marca primeiro</option>
 </select>
        
        

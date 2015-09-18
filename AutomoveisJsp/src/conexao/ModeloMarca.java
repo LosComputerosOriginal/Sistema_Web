@@ -1,6 +1,9 @@
 package conexao;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,11 +33,35 @@ public class ModeloMarca extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String marca = request.getParameter("marca");
 		
-		if(marca.equals("Ford") ){
-			response.getWriter().write("Ka");
-		}else{
-			response.getWriter().write("Qualquer Coisa");
+		int id = Integer.parseInt(marca);
+		
+		String option1 = "";
+		
+		if(marca.equalsIgnoreCase("Chevrolet")){
+		
+		for(int i = 0; i<4; i++){
+		option1 += "<option value=' " + (i + 1) + "'> Item " + (i + 1)  + "</option>" ;
+		
+		
+		
 		}
+		}else if(marca.equalsIgnoreCase("Ford")){
+			for(int i = 0; i<4; i++){
+				option1 += "<option value=' " + (i + 1) + "'> FORD  " + (i + 1)  + "</option>" ;
+		}
+		}		
+		
+		PrintWriter w = response.getWriter();
+		
+		w.println(option1);
+		
+		
+		System.out.println(marca + "Do Servlet");
+//		if(marca.equals("Ford") ){
+//			response.getWriter().write("Ka");
+//		}else{
+//			response.getWriter().write("Qualquer Coisa");
+//		}
 	}
 
 	/**
