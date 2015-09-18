@@ -3,6 +3,8 @@ package conexao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +36,19 @@ public class ModeloMarca extends HttpServlet {
 		String marca = request.getParameter("marca");
 		
 		int id = Integer.parseInt(marca);
+		
+		try {
+		ResultSet set =  MysqlConnect.db.query("");
+			/*
+			 * Modelo m = 
+			 * 
+			 * */
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		String option1 = "";
 		
