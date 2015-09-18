@@ -17,7 +17,7 @@ public final class MysqlConnect {
         String password = "";
         try {
             Class.forName(driver).newInstance();
-            this.conn = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3307/automoveis", "root", "");
+            this.conn = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/automoveis", "root", "");
         }
         catch (Exception sqle) {
             sqle.printStackTrace();
