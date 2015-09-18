@@ -9,6 +9,8 @@ import model.Veiculo;
 public class DaoCarro {
 
 	
+	/*Consulta e retorna todos os campos e itens salvos na tabela veiculos*/
+	
 	public static ResultSet consultaGeral(ResultSet set){
 	
 		  try {  
@@ -22,6 +24,9 @@ public class DaoCarro {
 		  return set;
 		   }  
 		
+	
+	
+	/*insere os dados na tabela veiulos*/
 	
 	
 	  public static void inserirDados(Veiculo v) {  

@@ -11,6 +11,9 @@ import model.Usuario;
 
 public class DaoUsuario {
  
+	
+	/*faz conecção com com Banco de dados*/
+	
     public Connection getConnection(){
         Connection connection = null;
         try {
@@ -24,6 +27,7 @@ public class DaoUsuario {
         return connection;
     }
  
+    /*Cadastra um novo usuario no banco*/
  
     public Usuario getUsuario( String login, String senha ){
         Connection c = this.getConnection();

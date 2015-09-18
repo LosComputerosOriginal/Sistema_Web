@@ -9,6 +9,10 @@ public class Veiculo {
 	private Float valorvenda;
 	private String marca;
 	private int cod_veiculo;
+	
+	
+	
+	
 	public String getPlaca() {
 		return placa;
 	}

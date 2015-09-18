@@ -14,24 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import conexao.MysqlConnect;
 
-/**
- * Servlet implementation class ModeloMarca
- */
+
 @WebServlet("/ModeloMarca")
 public class ModeloMarca extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public ModeloMarca() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -50,6 +44,12 @@ public class ModeloMarca extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
+		
+		/*faz a validação de campos da combo box, onde ele pega o id da tabela (marca) do item selecionado e
+		 * chama os ids e descrições da tabela (modelo) que correspondem apenas ao id da marca*/
 		
 		
 		String option1 = "";

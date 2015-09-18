@@ -12,12 +12,7 @@ import model.Usuario;
 import dao.DaoUsuario;
  
 
- 
-/**
- *
- * @author hallan medeiros
- *
- */
+
 public class ServletValidaLogin extends HttpServlet {
  
     private static final long serialVersionUID = 7633293501883840556L;
