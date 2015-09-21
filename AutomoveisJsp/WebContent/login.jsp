@@ -5,6 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Login</title>
+<style>
+body {background-color : orange}
+body {color:blue}
+
+</style>
 </head>
 <body>
 <br></br>
@@ -14,7 +19,7 @@
 <div align="center"><h2>
 <br></br>
     <tr>
-        <td>Usuário</td>
+        <td >Usuário</td>
         <td><input type="text" name="username" /></td>
     </tr>
     </h2>
