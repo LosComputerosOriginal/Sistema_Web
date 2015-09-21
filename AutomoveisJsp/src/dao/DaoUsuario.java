@@ -12,13 +12,13 @@ import model.Usuario;
 public class DaoUsuario {
  
 	
-	/*faz conecção com com Banco de dados*/
+	/*faz conecï¿½ï¿½o com com Banco de dados*/
 	
     public Connection getConnection(){
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/automoveis", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/automoveis", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

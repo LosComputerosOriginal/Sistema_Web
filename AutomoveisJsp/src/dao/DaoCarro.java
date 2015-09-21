@@ -19,7 +19,8 @@ public class DaoCarro {
 		  
 		  }   
 		      catch (SQLException e){  
-		         e.printStackTrace();  
+		        // e.printStackTrace();  
+		         System.out.println("FUUUUU");
 		      }  
 		  return set;
 		   }  
@@ -30,18 +31,22 @@ public class DaoCarro {
 	
 	
 	  public static void inserirDados(Veiculo v) {  
-		   String query = "INSERT INTO veiculos (placa, ano, marca, modelo, valorcusto, valorvenda) VALUES ( '" 
-	        + v.getPlaca() + "', "+ v.getAno()
-		   + ", '" + v.getMarca() + "','"+ v.getModelo() + "'," + v.getValorcusto() + 
-		   ", " + v.getValorvenda() + ");";
-
+		 
+		  String query = "INSERT INTO veiculos (cod_modelo, versao, cor, ano,"
+		   		+ "status,valorcusto,valorvenda,placa,motor,combustivel) VALUES ( " 
+	        + v.getCod_model()
+		   + ", '" + v.getVersao() + "','"+ v.getCor() + "'," + v.getAno() + 
+		   ", " + v.getStatus() + ", " + v.getValorCusto() + "," + v.getValorVenda() + ",'" + 
+		  v.getPlaca() + "','" + v.getMotor() + "','" + v.getCombustivel() + "');";
+		  
+		  System.out.println(query);
 		   
 		   try {
 			  MysqlConnect.db.insert(query);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		 
 		   

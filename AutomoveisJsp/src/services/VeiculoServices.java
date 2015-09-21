@@ -10,18 +10,27 @@ public class VeiculoServices {
 
 	public ResultSet res = null;
 	
-	 public void inserir (String placa, String modelo, int ano, Float valorCusto, Float valorVenda, String marca){
+	 public void inserir (int cod_model, String versao, String cor, int ano, int status,
+			float valorCusto, float valorVenda, String placa, String motor, String combustivel 
+			 ){
 		 
 		 Veiculo v = new Veiculo();
 		 
-		 v.setPlaca(placa);
-		 v.setModelo(modelo);
-		 v.setAno(ano);
-		 v.setValorcusto(valorCusto);
-		 v.setValorvenda(valorVenda);
-		 v.setMarca(marca);
+		System.out.println(cod_model);
+		v.setCod_model(cod_model);
+		v.setVersao(versao);
+		v.setCor(cor);
+		v.setAno(ano);
+		v.setStatus(status);
+		v.setValorCusto(valorCusto);
+		v.setValorVenda(valorVenda);
+		v.setPlaca(placa);
+		v.setMotor(motor);
+		v.setCombustivel(combustivel);
 		 
 		 DaoCarro.inserirDados(v);
+		 
+	
 		 
 		 
 	 }

@@ -11,10 +11,10 @@ import model.Modelo;
 
 public class DaoModelo{
 
-/*Criação de um array list de modelos para quando a query trouxer as
- * informações do banco, salvar no array */
+/*Criaï¿½ï¿½o de um array list de modelos para quando a query trouxer as
+ * informaï¿½ï¿½es do banco, salvar no array */
 	
-public List<Modelo> getItems() {
+public static List<Modelo> getItems(int id) {
 	 List<Modelo> listaModelos = new ArrayList<Modelo>();
 		
 	 
@@ -22,13 +22,15 @@ public List<Modelo> getItems() {
 	  * e cria um novo objeto (modelo mo = new modelo();) */
 	 
 		try {
-			ResultSet set =  MysqlConnect.db.query("select id, nome_modelo from modelo");
+			ResultSet set =  MysqlConnect.db.query("select id, nome_modelo from modelo where codigo_marca = " + id);
+			int i = 0;
 			while(set.next()){
+				i = i + 1;
 				Modelo mo = new Modelo();
 				mo.setId(set.getInt("id"));
 				mo.setNome_modelo(set.getString("nome_modelo"));
 				listaModelos.add(mo);
-				System.out.println(mo.getNome_modelo());
+				
 			}
 		
 		} catch (SQLException e) {

@@ -45,9 +45,9 @@ function enviar(par){
      
    if (par == 'cadastrar'){  
      
-      if (document.cadastro.marcaField.value == ''){  
+      if (document.cadastro.marcaSelect.value == ''){  
          document.cadastro.statusField.value = 'Preencha o campo marca';  
-      }else if (document.cadastro.modeloField.value == ''){  
+      }else if (document.cadastro.modeloSelect.value == ''){  
          document.cadastro.statusField.value = 'Preencha o campo Modelo'; 
       }else if (document.cadastro.anoField.value == ''){  
           document.cadastro.statusField.value = 'Preencha o campo Ano'; 
@@ -64,7 +64,7 @@ function enviar(par){
   
    } else if (par == 'consultar'){  
   
-      if (document.cadastro.modeloField.value == ''){  
+      if (document.cadastro.modeloSelect.value == ''){  
          document.cadastro.statusField.value = 'Preencha o campo modelo';  
       }else {  
          document.cadastro.action='consultar.jsp';  
@@ -72,9 +72,9 @@ function enviar(par){
       }  
   
    } else if (par == 'alterar'){  
-	   if (document.cadastro.marcaField.value == ''){  
+	   if (document.cadastro.marcaSelect.value == ''){  
 	         document.cadastro.statusField.value = 'Preencha o campo marca';  
-	      }else if (document.cadastro.modeloField.value == ''){  
+	      }else if (document.cadastro.modeloSe.value == ''){  
 	         document.cadastro.statusField.value = 'Preencha o campo Modelo'; 
 	      }else if (document.cadastro.anoField.value == ''){  
 	          document.cadastro.statusField.value = 'Preencha o campo Ano'; 
@@ -119,14 +119,17 @@ function enviar(par){
 //String idade = request.getParameter("idade");  
 //String sexo = request.getParameter("sexo");  
 String status = request.getParameter("status");
-
-
 String modelo = request.getParameter("modelo");
 String placa = request.getParameter("placa");
 String ano = request.getParameter("ano");
 String valorcusto = request.getParameter("valorcusto");
 String valorvenda = request.getParameter("valorvenda");
-
+String idModelo = request.getParameter("modeloSelect");
+System.out.println(idModelo);
+String cor = request.getParameter("cor");
+String combustivel = request.getParameter("combustivel");
+String motor = request.getParameter("motor");
+String versao = request.getParameter("versao");
 //int ano = Integer.parseInt((String)request.getParameter("ano"));
 //Float valorcusto = Float.parseFloat((String)request.getParameter("valorcusto"));
 //Float valorvenda = Float.parseFloat((String)request.getParameter("valorvenda"));
@@ -170,7 +173,7 @@ String valorvenda = request.getParameter("valorvenda");
          
          <strong>Modelo :</strong>  
        <select id = "modeloSelect" name = "modelo">
-    <option>Selecione a marca primeiro</option>
+    <option >Selecione a marca primeiro</option>
 </select>
        
        
@@ -184,7 +187,25 @@ String valorvenda = request.getParameter("valorvenda");
         <input name="valorvendaField" type="text" id="valorvendaField" size="8" value="<%=(valorvenda==null)?"":valorvenda%>"> 
           </p>
   
+              <strong>Cor:</strong>    
+        <input name="corField" type="text" id="corField" size="8" value="<%=(cor==null)?"":cor%>">
+        
+         <strong>Status Carro:</strong>    
+        <input name="statusCarroField" type="text" id="statusCarroField" size="8" value="<%=(status==null)?"":cor%>">
+              <p>
+         <strong>Combustivel:</strong>    
+        <input name="combustivelField" type="text" id="combustivelField" size="8" value="<%=(combustivel==null)?"":combustivel%>">     
               
+              <strong>Motor:</strong>    
+        <input name="motorField" type="text" id="motorField" size="8" value="<%=(motor==null)?"":motor%>">
+              </p>
+              
+              <p>
+              <strong>Versão:</strong>    
+        <input name="versaoField" type="text" id="versaoField" size="8" value="<%=(versao==null)?"":versao%>">
+              
+              </p>
+
    </td>  
   </tr>  
   <tr>  

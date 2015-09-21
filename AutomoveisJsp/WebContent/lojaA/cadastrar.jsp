@@ -53,14 +53,19 @@
  
 <%      
    try {  
-  
+	  
      
-      con.inserir(request.getParameter("placaField"), 
-    		  request.getParameter("modeloField"), 
+       con.inserir(Integer.parseInt(request.getParameter("modelo")),
+    		   request.getParameter("versaoField"),
+    		   request.getParameter("corField"),
     		  Integer.parseInt(request.getParameter("anoField")), 
+	    	  Integer.parseInt(request.getParameter("statusCarroField")),
     		  Float.parseFloat(request.getParameter("valorcustoField")), 
-    		  Float.parseFloat(request.getParameter("valorvendaField")), 
-    		  request.getParameter("marcaField"));	
+    		  Float.parseFloat(request.getParameter("valorvendaField")), 	
+    		  request.getParameter("placaField"),
+    		  request.getParameter("motorField"),
+    		  request.getParameter("combustivelField"));			
+       
      
 	
                  

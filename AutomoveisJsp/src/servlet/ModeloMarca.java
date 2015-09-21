@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import conexao.MysqlConnect;
+import dao.DaoModelo;
+import model.Modelo;
 
 
 @WebServlet("/ModeloMarca")
@@ -33,40 +37,29 @@ public class ModeloMarca extends HttpServlet {
 		
 		int id = Integer.parseInt(marca);
 		
-		try {
-		ResultSet set =  MysqlConnect.db.query("");
-			/*
-			 * Modelo m = 
-			 * 
-			 * */
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		List<Modelo> modelos = new ArrayList<Modelo>(); 
+		
+		modelos = DaoModelo.getItems(id);
 		
 		
 		
 		
-		/*faz a validação de campos da combo box, onde ele pega o id da tabela (marca) do item selecionado e
-		 * chama os ids e descrições da tabela (modelo) que correspondem apenas ao id da marca*/
+		/*faz a validaï¿½ï¿½o de campos da combo box, onde ele pega o id da tabela (marca) do item selecionado e
+		 * chama os ids e descriï¿½ï¿½es da tabela (modelo) que correspondem apenas ao id da marca*/
 		
 		
 		String option1 = "";
 		
-		if(marca.equalsIgnoreCase("Chevrolet")){
 		
-		for(int i = 0; i<4; i++){
-		option1 += "<option value=' " + (i + 1) + "'> Item " + (i + 1)  + "</option>" ;
+		
+		for(int i = 0; i<modelos.size(); i++){
+		option1 += "<option value=" + modelos.get(i).getId() + "> " + modelos.get(i).getNome_modelo()  + "</option>" ;
 		
 		
 		
 		}
-		}else if(marca.equalsIgnoreCase("Ford")){
-			for(int i = 0; i<4; i++){
-				option1 += "<option value=' " + (i + 1) + "'> FORD  " + (i + 1)  + "</option>" ;
-		}
-		}		
+				
 		
 		PrintWriter w = response.getWriter();
 		
