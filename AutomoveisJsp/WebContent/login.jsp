@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Login</title>
 <style>
-body {background-color : orange}
-body {color:blue}
+body {background-color : steelblue}
+body {color:lightcyan}
 
 </style>
 </head>
