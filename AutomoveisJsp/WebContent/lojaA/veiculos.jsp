@@ -105,7 +105,9 @@ function enviar(par){
 </script>  
   
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">  
-<style type="text/css" >  
+<style type="text/css" >
+body {background-color : #4682B4}
+body {color: lightcyan}  
 <!--  
 .style3 {   font-size: 28px;  
    font-weight: bold;  
@@ -150,11 +152,11 @@ String versao = request.getParameter("versao");
   
 <table width="472" border="0" align="center">  
   <tr>  
-    <td width="458" height="70" bgcolor="#6699FF"><p align="left" class="style3"> Cadastro Veiculos </p>  
+    <td width="458" height="70" bgcolor="#4682B4"><p align="left" class="style3"> Cadastro Veiculos </p>  
     </td>  
   </tr>  
   <tr>  
-    <td height="177" bgcolor="#6699FF" align="center"><p>
+    <td height="177" bgcolor="#4682B4" align="center"><p>
      <strong>Marca :</strong>  
         
         <jsp:useBean id="obj" class="dao.DaoMarca" scope="page"/>
@@ -209,7 +211,7 @@ String versao = request.getParameter("versao");
    </td>  
   </tr>  
   <tr>  
-    <td height="101" bgcolor="#6699FF" align="center"><p>   
+    <td height="101" bgcolor="#4682B4" align="center"><p>   
         <input type="button" onClick="enviar('cadastrar')" name="bt1" value="cadastrar">  
         <input type="button" onClick="enviar('consultar')" name="bt2" value="consultar">  
         <input type="button" onClick="enviar('alterar')" name="bt3" value="alterar">  
