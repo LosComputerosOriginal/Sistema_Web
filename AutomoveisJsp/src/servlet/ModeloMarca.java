@@ -34,10 +34,16 @@ public class ModeloMarca extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String marca = request.getParameter("marca");
+		System.out.println(marca);
+		
+		if(marca.equals("Selecione a marca")){
+			PrintWriter w = response.getWriter();
+			w.println("<option>Selecione a marca primeiro</option>");
+		}else{
 		
 		int id = Integer.parseInt(marca);
 		
-		
+		System.out.println(marca);
 		List<Modelo> modelos = new ArrayList<Modelo>(); 
 		
 		modelos = DaoModelo.getItems(id);
@@ -72,7 +78,8 @@ public class ModeloMarca extends HttpServlet {
 //		}else{
 //			response.getWriter().write("Qualquer Coisa");
 //		}
-	}
+		}
+		}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

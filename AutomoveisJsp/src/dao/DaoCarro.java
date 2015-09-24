@@ -14,7 +14,8 @@ public class DaoCarro {
 	public static ResultSet consultaGeral(ResultSet set){
 	
 		  try {  
-		      set =  MysqlConnect.db.query("select * from veiculos"); 
+		      set =  MysqlConnect.db.query("select v.id, m.nome_modelo, v.versao, v.ano, v.placa, v.valorcusto, v.valorvenda, v.cor, v.status, v.motor, v.combustivel " +  
+"from veiculos v,modelo m where v.cod_modelo = m.id"); 
 		      
 		  
 		  }   
@@ -41,14 +42,10 @@ public class DaoCarro {
 		  
 		  System.out.println(query);
 		   
-		   try {
+		  
 			  MysqlConnect.db.insert(query);
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-		}
-		 
+		
 		   
 		   
 	   

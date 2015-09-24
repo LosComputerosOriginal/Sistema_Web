@@ -192,8 +192,7 @@ String versao = request.getParameter("versao");
               <strong>Cor:</strong>    
         <input name="corField" type="text" id="corField" size="8" value="<%=(cor==null)?"":cor%>">
         
-         <strong>Status Carro:</strong>    
-        <input name="statusCarroField" type="text" id="statusCarroField" size="8" value="<%=(status==null)?"":cor%>">
+         
               <p>
          <strong>Combustivel:</strong>    
         <input name="combustivelField" type="text" id="combustivelField" size="8" value="<%=(combustivel==null)?"":combustivel%>">     

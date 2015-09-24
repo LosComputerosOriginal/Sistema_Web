@@ -51,11 +51,16 @@ public final class MysqlConnect {
      * @return boolean
      * @throws SQLException
      */
-    public void insert(String insertQuery) throws SQLException {
-        statement = db.conn.createStatement();
+    public void insert(String insertQuery)  {
+       System.out.println("PASOOU AQUI PORRA");
+    	
+       try{
+    	statement = db.conn.createStatement();
         statement.executeUpdate(insertQuery);
       
- 
+       }catch(SQLException e){
+    	   e.printStackTrace();
+       }
     }
  
 }

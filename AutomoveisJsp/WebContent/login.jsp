@@ -25,7 +25,7 @@ body {color:lightcyan}
     </h2>
     </div>
     <tr>
-    <div align="center"><h2>
+    <div align="center" ><h2>
         <td>Senha</td>
         <td><input type="password" name="password" /></td>
         </h2></div>

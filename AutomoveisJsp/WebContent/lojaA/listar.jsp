@@ -21,13 +21,16 @@
       Marca 
    </strong></td>      
    <td width=100><strong>  
-      Modelo 
+      Versão 
    </strong></td>      
+   <td width=100><strong>  
+     Placa
+   </strong></td>
    <td width=60><strong>  
-      Ano  
+      Cor  
    </strong></td>  
    <td width=60><strong>  
-      Placa 
+      Ano 
    </strong></td>  
    <td width=100><strong>  
       Valor Custo  
@@ -35,7 +38,16 @@
    <td width=100><strong>  
       Valor Venda  
    </strong></td>  
-  
+   <td width=100><strong>  
+      Combustível  
+   </strong></td>  
+   <td width=100><strong>  
+     Motor
+   </strong></td>  
+    <td width=100><strong>  
+     Status
+   </strong></td>    
+         
   
 <%      
    try {  
@@ -43,29 +55,58 @@
       ResultSet temp = con.getResultado();  
         
       while (temp.next()){  
-      %>  
+     	  %>  
       <tr>  
        <td width=30>  
-               <%out.print(temp.getString("cod_veiculo"));%>  
+               <%out.print(temp.getString("id"));%>  
          </td> 
           <td width=200>  
-               <%out.print(temp.getString("marca"));%>  
+               <%out.print(temp.getString("nome_modelo"));%>  
          </td>  
           <td width=50>  
-               <%out.print(temp.getString("modelo"));%>  
-         </td>  
+               <%out.print(temp.getString("versao"));%>  
+         </td>
+         
+         <td width=50>  
+               <%out.print(temp.getString("placa"));%>  
+         </td> 
+           
           <td width=30>  
-               <%out.print(temp.getString("ano"));%>  
+               <%out.print(temp.getString("cor"));%>  
          </td>  
            <td width=30>  
-               <%out.print(temp.getString("placa"));%>  
+               <%out.print(temp.getString("ano"));%>  
          </td> 
            <td width=30>  
                <%out.print(temp.getString("valorcusto"));%>  
          </td> 
            <td width=30>  
                <%out.print(temp.getString("valorvenda"));%>  
+         </td>
+       
+          <td width=30>  
+               <%out.print(temp.getString("combustivel"));%>  
          </td> 
+         
+          <td width=30>  
+               <%out.print(temp.getString("motor"));%>  
+         </td> 
+                
+          <td width=30>  
+               <%
+               int stat = Integer.parseInt(temp.getString("status"));
+               
+               System.out.println(stat);
+               
+               if(stat == 0){
+            	   out.print("Em estoque");
+               }else{
+            	   out.print("Vendido");
+               }
+               
+               %>  
+         </td> 
+          
       <%}  
      
    }catch (Exception e) {  

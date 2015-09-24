@@ -21,8 +21,6 @@
   
    <tr>  
    
-   
-   
    <td width=100><strong>  
       Cod Veiculo 
    </strong></td>      
@@ -30,92 +28,127 @@
       Marca 
    </strong></td>      
    <td width=100><strong>  
-      Modelo 
+      Versão 
    </strong></td>      
+   <td width=100><strong>  
+     Placa
+   </strong></td>
    <td width=60><strong>  
-      Ano  
+      Cor  
    </strong></td>  
    <td width=60><strong>  
-      Placa 
+      Ano 
    </strong></td>  
    <td width=100><strong>  
       Valor Custo  
    </strong></td>
    <td width=100><strong>  
       Valor Venda  
+   </strong></td>  
+   <td width=100><strong>  
+      Combustível  
+   </strong></td>  
+   <td width=100><strong>  
+     Motor
+   </strong></td>  
+    <td width=100><strong>  
+     Status
    </strong></td>    
    
    </tr>  
   
   
 
+  <%
   
- 
-<%      
-   try {  
-	  
-     
-       con.inserir(Integer.parseInt(request.getParameter("modelo")),
-    		   request.getParameter("versaoField"),
-    		   request.getParameter("corField"),
-    		  Integer.parseInt(request.getParameter("anoField")), 
-	    	  Integer.parseInt(request.getParameter("statusCarroField")),
-    		  Float.parseFloat(request.getParameter("valorcustoField")), 
-    		  Float.parseFloat(request.getParameter("valorvendaField")), 	
-    		  request.getParameter("placaField"),
-    		  request.getParameter("motorField"),
-    		  request.getParameter("combustivelField"));			
-       
-     
-	
-                 
-      con.setConsulta();  
+  con.inserir(Integer.parseInt(request.getParameter("modelo")),
+		   request.getParameter("versaoField"),
+		   request.getParameter("corField"),
+		  Integer.parseInt(request.getParameter("anoField")), 
+   	      0,
+		  Float.parseFloat(request.getParameter("valorcustoField")), 
+		  Float.parseFloat(request.getParameter("valorvendaField")), 	
+		  request.getParameter("placaField"),
+		  request.getParameter("motorField"),
+		  request.getParameter("combustivelField"));			
+  
+  
+  try{
+	  con.setConsulta();  
       ResultSet temp = con.getResultado();  
-      temp.next();  
-        
-      if(request.getParameter("modeloField").equals(temp.getString("modelo")))  
-         response.sendRedirect("http://localhost:8080/AutomoveisJsp/lojaA/veiculos.jsp?status=Registro já existente");  
-        
-      do{  
-      %>  
-      <tr>  
-        <td width=30>  
-               <%out.print(temp.getString("cod_veiculo"));%>  
+      
+      while (temp.next()){  
+          %>  
+         <tr>  
+       <td width=30>  
+               <%out.print(temp.getString("id"));%>  
          </td> 
           <td width=200>  
-               <%out.print(temp.getString("marca"));%>  
+               <%out.print(temp.getString("nome_modelo"));%>  
          </td>  
           <td width=50>  
-               <%out.print(temp.getString("modelo"));%>  
-         </td>  
+               <%out.print(temp.getString("versao"));%>  
+         </td>
+         
+         <td width=50>  
+               <%out.print(temp.getString("placa"));%>  
+         </td> 
+           
           <td width=30>  
-               <%out.print(temp.getString("ano"));%>  
+               <%out.print(temp.getString("cor"));%>  
          </td>  
            <td width=30>  
-               <%out.print(temp.getString("placa"));%>  
+               <%out.print(temp.getString("ano"));%>  
          </td> 
            <td width=30>  
                <%out.print(temp.getString("valorcusto"));%>  
          </td> 
            <td width=30>  
                <%out.print(temp.getString("valorvenda"));%>  
+         </td>
+       
+          <td width=30>  
+               <%out.print(temp.getString("combustivel"));%>  
          </td> 
-               </tr>  
-      <%}while (temp.next());  
-     
-   }catch (Exception e) {  
-      e.printStackTrace();
-   }  
-    
+         
+          <td width=30>  
+               <%out.print(temp.getString("motor"));%>  
+         </td> 
+                
+          <td width=30>  
+               <%
+               int stat = Integer.parseInt(temp.getString("status"));
+               
+               System.out.println(stat);
+               
+               if(stat == 0){
+            	   out.print("Em estoque");
+               }else{
+            	   out.print("Vendido");
+               }
+               
+               %>  
+         </td> 
+          <%}  
+	  
+	  
+  }catch(Exception e){
+	  e.printStackTrace();
+  }
+  
+  
+  %>
+ 
 
-%>  
+
+  
 </table>  
   <p> </p>  
   <p>  
     <input type="submit" name="Submit" value="voltar">  
 </p>    
-<p><strong>Status:  
-    <input name="statusField" disabled type="text" id="statusField" size="36" value="<%=request.getParameter("modeloField")%> foi cadastrado com sucesso">  
+ <p><strong>Status:  
+    <input name="statusField" disabled type="text" id="statusField" size="36" value="<%=request.getParameter("placaField")%> foi cadastrado com sucesso">  
       </strong></p>  
 </form>  
 </body>  
