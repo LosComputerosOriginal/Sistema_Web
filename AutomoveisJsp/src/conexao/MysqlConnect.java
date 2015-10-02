@@ -2,7 +2,6 @@ package conexao;
 
 import com.mysql.jdbc.Connection;
 import java.sql.*;
-import java.sql.DriverManager;
 
 public final class MysqlConnect {
     public Connection conn;
@@ -61,6 +60,19 @@ public final class MysqlConnect {
        }catch(SQLException e){
     	   e.printStackTrace();
        }
+    }
+    
+    public PreparedStatement statement(String query){
+    	PreparedStatement ps = null;
+    	try {
+			ps = MysqlConnect.db.conn.prepareStatement(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+    	return ps;
     }
  
 }
