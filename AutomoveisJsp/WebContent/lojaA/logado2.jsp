@@ -24,7 +24,9 @@ body {color : lightcyan}
 </c:choose>
 
 <button  id="home"class="btn btn-primary"  onclick="location.href='veiculos.jsp'">Cadastro Veiculos</button>
+<button  id="home"class="btn btn-primary"  onclick="location.href='listarparavenda.jsp'">Efetuar Venda</button>
 <button  id="logout"class="btn btn-primary"  onclick="location.href='logout.jsp'">Sair do sistema</button>
+<button  id="logout"class="btn btn-primary"  onclick="location.href='cliente.jsp'">Cadastrar cliente</button>
 
 </div>
 </body>

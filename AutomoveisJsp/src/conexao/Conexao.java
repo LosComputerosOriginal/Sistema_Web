@@ -152,14 +152,7 @@ public Conexao() {
 	   String query = "INSERT INTO `veiculos` (`cod_veiculo`, `placa`, `ano`, `marca`, `modelo`, `valorcusto`, `valorvenda`) VALUES (4, '34', '123', 'knsi1', '123', '123', '123'); ";
 
 	   
-	   try {
-		  
-		  MysqlConnect.db.insert(query);
-		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	   MysqlConnect.db.insert(query);
 	 
 	   
 	   

@@ -25,7 +25,7 @@
 	  <%--Passa pelo get para o servlet a variável marca e recebe os dados para prencher o outro select--%>
 	  
 	  $.ajax({
-		  url:"http://localhost:8080/AutomoveisJsp/ModeloMarca?marca=" + marca
+		  url:"http://localhost:8085/AutomoveisJsp/ModeloMarca?marca=" + marca
 	  }).done(function(data){
 		console.log(data);
 		$( "#modeloSelect" ).children().remove();
@@ -42,9 +42,13 @@
 <script>  
   
 function enviar(par){  
+     <%
      
-   if (par == 'cadastrar'){  
      
+     %>
+
+  if (par == 'cadastrar'){  
+	  
       if (document.cadastro.marcaSelect.value == ''){  
          document.cadastro.statusField.value = 'Preencha o campo marca';  
       }else if (document.cadastro.modeloSelect.value == ''){  

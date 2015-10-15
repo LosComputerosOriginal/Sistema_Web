@@ -32,6 +32,7 @@ public class ModeloMarca extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("PUTARIA");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String marca = request.getParameter("marca");
 		System.out.println(marca);
@@ -49,7 +50,7 @@ public class ModeloMarca extends HttpServlet {
 		modelos = DaoModelo.getItems(id);
 		
 		
-		
+		System.out.println(modelos.isEmpty());
 		
 		/*faz a valida��o de campos da combo box, onde ele pega o id da tabela (marca) do item selecionado e
 		 * chama os ids e descri��es da tabela (modelo) que correspondem apenas ao id da marca*/
