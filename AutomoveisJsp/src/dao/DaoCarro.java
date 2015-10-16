@@ -43,6 +43,7 @@ public class DaoCarro {
 		  System.out.println(query);
 		   
 		  
+		  
 			  MysqlConnect.db.insert(query);
 			
 		
