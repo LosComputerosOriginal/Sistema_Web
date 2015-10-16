@@ -35,6 +35,14 @@ public class VeiculoServices {
 		 
 	 }
 	 
+	 public void setConsultaVeiculosEmEstoque(){
+		 res = DaoCarro.consultaVeiculoDisponivel(res); 
+	 }
+	 
+	 
+	 public void setConsultaVeiculoVenda(String id){
+		 res = DaoCarro.consultaVenda(res, id);
+	 }
 	 
 	 public void setConsulta() {  
 	        

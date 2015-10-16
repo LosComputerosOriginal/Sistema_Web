@@ -11,6 +11,33 @@ public class DaoCarro {
 	
 	/*Consulta e retorna todos os campos e itens salvos na tabela veiculos*/
 	
+	
+	public static ResultSet consultaVeiculoDisponivel(ResultSet set){
+		
+		try{
+			set =  MysqlConnect.db.query("select v.id, m.nome_modelo, v.versao, v.ano, v.placa, v.valorcusto, v.valorvenda, v.cor, v.status, v.motor, v.combustivel " +  
+					"from veiculos v,modelo m where v.cod_modelo = m.id and v.status=0"); 
+		}catch(SQLException e){
+			
+		}
+	return set;
+	}
+	
+	
+	public static ResultSet consultaVenda(ResultSet set, String id){
+		
+		try{
+			set = MysqlConnect.db.query("select v.id, m.nome_modelo, v.versao, v.ano, v.placa, v.valorcusto, v.valorvenda, v.cor, v.status, v.motor, v.combustivel " +  
+"from veiculos v,modelo m where v.cod_modelo = m.id and v.id=" + id );
+		}catch(SQLException e){
+			
+		}
+		
+		return set;
+	}
+	
+	
+	
 	public static ResultSet consultaGeral(ResultSet set){
 	
 		  try {  

@@ -15,7 +15,7 @@ public class DaoUsuario {
 	
 	/*faz conec��o com com Banco de dados*/
 	
-<<<<<<< HEAD
+
     public Connection getConnection(){
         Connection connection = null;
         try {
@@ -28,9 +28,9 @@ public class DaoUsuario {
         } 
         return connection;
     }
-=======
+
   
->>>>>>> origin/master
+
  
     /*Cadastra um novo usuario no banco*/
  
