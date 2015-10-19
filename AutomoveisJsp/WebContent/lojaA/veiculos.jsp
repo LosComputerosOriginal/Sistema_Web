@@ -18,8 +18,7 @@ body {color : lightcyan}
     <c:when test="${ user eq null }">
         <jsp:forward page="login.jsp" />
          <p>Bem Vindo ao Sistema !!</p>
->>>>>>> Stashed changes
-         
+
     </c:when>
     <c:otherwise>
               <p>Bem-vindo ${ user.nome }</p>
