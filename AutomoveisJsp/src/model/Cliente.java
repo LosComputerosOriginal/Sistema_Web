@@ -5,7 +5,7 @@ package model;
 public class Cliente {
 
 	private	int id ;
-	private int cpf;
+	private String cpf;
 	private	String nome;
 	private int rg;
 	private	String telefone;
@@ -21,11 +21,11 @@ public class Cliente {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
+	public void setCpf(String cpf2) {
+		this.cpf = cpf2;
 	}
 	public String getNome() {
 		return nome;

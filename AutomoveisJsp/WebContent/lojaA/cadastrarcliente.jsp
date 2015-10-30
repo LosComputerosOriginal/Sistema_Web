@@ -73,7 +73,7 @@ telefone
          //request.getParameter("nascimentoField"),	
          //request.getParameter("emailField"));		
 try{  
-  con.inserirClientes(Integer.parseInt(request.getParameter("cpfField")), request.getParameter("nomeField"), 
+  con.inserirClientes(request.getParameter("cpfField"), request.getParameter("nomeField"), 
 		  Integer.parseInt(request.getParameter("rgField")), request.getParameter("telefoneField"),
 		  request.getParameter("ruaField"), request.getParameter("bairroField"),
 		  Integer.parseInt(request.getParameter("numeroField")), request.getParameter("cidadeField"),
@@ -84,7 +84,7 @@ try{
 }
 
 try{
-	  con.setConsulta();  
+	  con.setConsulta(); 
     ResultSet temp = con.getResultado();  
     
     while (temp.next()){  

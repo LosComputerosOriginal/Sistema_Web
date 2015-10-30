@@ -101,7 +101,7 @@
                <%
                int stat = Integer.parseInt(temp.getString("status"));
                
-               System.out.println(stat);
+               //System.out.println(stat);
                
                if(stat == 0){
             	   out.print("Em estoque");

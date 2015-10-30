@@ -1,12 +1,27 @@
 <%@page import="java.io.PrintStream"%>
 <%@page import="javax.sound.midi.SysexMessage"%>
 <%@ page contentType="text/html" language="java" import="java.sql.*"%>  
-<jsp:useBean id="con" class="services.VeiculoServices"/>  
+<jsp:useBean id="con" class="services.VeiculoServices"/>
+<jsp:useBean id="con2" class="services.clienteservices"/>  
   
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
 <html>  
 <head>  
-<title>Cadastrar</title>  
+<title>Cadastrar</title> 
+<script type = "text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
+  </script>
+  <script type="text/javascript">
+  function confirmacpf(){
+	   var cpf =$("#cpfField").val();
+	   console.log(cpf)
+	   
+	   $.ajax({url:"http://localhost:9090/AutomoveisJsp/Confirmacaocliente?cpf="+cpf
+		   
+	   })
+  }
+	   
+  
+  </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">  
 </head>  
   
@@ -110,7 +125,7 @@
                <%
                int stat = Integer.parseInt(temp.getString("status"));
                
-               System.out.println(stat);
+              //out.Println(stat);
                
                if(stat == 0){
             	   out.print("Em estoque");
@@ -118,9 +133,9 @@
             	   out.print("Vendido");
                }
                
-               %>  
-         </td> 
-          <%}  
+               
+         
+          }  
 	  
 	  
   }catch(Exception e){
@@ -129,15 +144,32 @@
   
   
   %>
+ </table>
+
+
+      
+     
+      
  
-
-
-  
-</table>  
-  <p> </p>  
-   
 </form>  
+<form name="cadastro" method="post" action="usuarioverificado.do">  
+<%
+String cpf = request.getParameter("cpf");
+String status = request.getParameter("status");
+String nome = request.getParameter("nome");
 
+ %>
+    <p>
+         <strong>CPF:</strong>    
+        <input name="cpf" type="text" id="cpfField" size="12" value="<%=(cpf==null)?"":cpf%> "/>     </p>
+        <input type="button" onClick="confirmacpf()" name="bt1" value="Confirmar Cadastro" >  
+        
+   
+    <p> <strong>Status:  
+   <input name="statusField" disabled type="text" id="statusField" size="46" value="<%=(status==null)?"":status%>">  
+      </strong></p>
+      
+      </form>
 <button  id="home"class="btn btn-primary"  onclick="location.href='vender.jsp'">Voltar</button>
 
 

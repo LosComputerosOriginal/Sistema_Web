@@ -10,7 +10,7 @@ import model.Cliente;
 public class clienteservices {
 	public ResultSet res = null;
 	
-	 public void inserirClientes ( int cpf, String nome, int rg, String telefone,
+	 public void inserirClientes ( String cpf, String nome, int rg, String telefone,
 			String rua, String bairro, int numero, String cidade, String nascimento, String email
 			 ){
 		 
@@ -38,13 +38,13 @@ public class clienteservices {
 	 
 	 
 	 public void setConsulta() {  
-	        
-	      res = DaoCliente.consultaGeral(res);  
+	      
+	      res = DaoCliente.consultaGeral();  
 	  
 	   }  
 	
 	
-	   public ResultSet getResultado() {  
+	   public ResultSet getResultado() { 
 		      return res;  
 		   } 
 	
