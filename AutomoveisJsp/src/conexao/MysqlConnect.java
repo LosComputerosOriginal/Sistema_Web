@@ -9,14 +9,14 @@ public final class MysqlConnect {
     public static MysqlConnect db = MysqlConnect.getDbCon();
     
     MysqlConnect() {
-        String url= "jdbc:mysql://localhost:3306/";
+        String url= "jdbc:mysql://localhost:3307/";
         String dbName = "automoveis";
         String driver = "com.mysql.jdbc.Driver";
         String userName = "root";
-        String password = "";
+        String password = "root";
         try {
             Class.forName(driver).newInstance();
-            this.conn = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3307/automoveis", "root", "");
+            this.conn = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3307/automoveis", "root", "root");
         }
         catch (Exception sqle) {
             sqle.printStackTrace();

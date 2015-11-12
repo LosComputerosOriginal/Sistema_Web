@@ -24,7 +24,7 @@
 	  <%--Passa pelo get para o servlet a variável marca e recebe os dados para prencher o outro select--%>
 	  
 	  $.ajax({
-		  url:"http://localhost:8080/AutomoveisJsp/ModeloMarca?marca=" + marca
+		  url:"http://localhost:9090/AutomoveisJsp/ModeloMarca?marca=" + marca
 	  }).done(function(data){
 		console.log(data);
 		$( "#modeloSelect" ).children().remove();

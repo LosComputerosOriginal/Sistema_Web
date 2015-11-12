@@ -13,12 +13,32 @@
   <script type="text/javascript">
   function confirmacpf(){
 	   var cpf =$("#cpfField").val();
-	   console.log(cpf)
 	   
-	   $.ajax({url:"http://localhost:9090/AutomoveisJsp/Confirmacaocliente?cpf="+cpf
-		   
-	   })
+	  
+	  // $.ajax({url:"http://localhost:9090/AutomoveisJsp/Confirmacaocliente?cpf="+cpf
+	 
+	   
+			   
+			   
+		//   })
+	
+	   
+       //}
+  //alert("entrei");
+	   
+  $.getJSON("http://localhost:9090/AutomoveisJsp/Confirmacaocliente", 
+		     {"cpf": cpf}).done(function (data) {
+		    	 console.log(data);
+		     });
   }
+  </script>
+  
+  <script type="text/javascript">
+  function habilitaBotao(){
+	  alert($("#vendaconcluida").prop("disabled"));
+	  $("#vendaconcluida").prop("disabled", false);
+	   }
+  
 	   
   
   </script>
@@ -162,7 +182,9 @@ String nome = request.getParameter("nome");
     <p>
          <strong>CPF:</strong>    
         <input name="cpf" type="text" id="cpfField" size="12" value="<%=(cpf==null)?"":cpf%> "/>     </p>
-        <input type="button" onClick="confirmacpf()" name="bt1" value="Confirmar Cadastro" >  
+        <input  id="confirmacadastro" type="button" onClick="confirmacpf()" name="bt1" value="Confirmar Cadastro" >
+        <button id="vendaconcluida" onclick="location.href='Vendaconfirmada.jsp'" disabled>Confirmar venda</button>
+        <input  id="habilitar" type="button" onClick='habilitaBotao()'> 
         
    
     <p> <strong>Status:  
