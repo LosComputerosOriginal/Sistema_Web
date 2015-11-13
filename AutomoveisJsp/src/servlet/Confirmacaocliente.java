@@ -29,33 +29,46 @@ public class Confirmacaocliente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String cpf = request.getParameter("cpf");
-		
-	System.out.println(cpf);
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		
+//		
+//		String cpf = request.getParameter("cpf");
+//	
+//	System.out.println(cpf);
+//	
+//	  response.setContentType("text/html;charset=UTF-8");
+//      response.getWriter().write("Success Data");
 
-		if (cpf.equals("")) {
+	
+		
+		PrintWriter out = response.getWriter();
+		
+		String json = "{\"retorno\" : true}";
+		
+		out.println(json);
+	
+		/*if (cpf.equals("")) {
 			System.out.println("Digite um cpf");
 		} else if (cpf.equals(request.getParameter("cpf"))) {
 
 			String nome = DaoCliente.consultacpf(cpf);
 			if (nome == null) {
 				System.out.println("cpfinvalido");
-			} else {
-				PrintWriter out = response.getWriter();
-				response.setContentType("aplication/json");
-				response.setCharacterEncoding("utf-8");
-				JSONObject json = new JSONObject();
-				json.put("retorno", true);
-				out.print(json.toString());
+			} else {*/
+//				PrintWriter out = response.getWriter();
+//				response.setContentType("aplication/json");
+//				response.setCharacterEncoding("utf-8");
+//				JSONObject json = new JSONObject();
+//				json.put("retorno" , true);
+//				out.print(json.toString());
 				
 				//w.println(( " {'retorno' :'true'} "));
 				//w.println("true");
 				//System.out.println("************************--------*****************************");
 				//response.sendRedirect("lojaA/logado2.jsp");
 				//w.close();
-			}
-		}
+			//}
+		//}
 	}
 
 }

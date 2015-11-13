@@ -11,8 +11,53 @@
 <script type = "text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js">
   </script>
   <script type="text/javascript">
-  function confirmacpf(){
-	   var cpf =$("#cpfField").val();
+  function confirmacpf(callbackfn) {
+	  var cpf = $("#cpfField").val();
+	  alert(cpf);
+      var Success = false;
+      $.ajax({
+    	  
+          type: "POST",
+          url: "http://localhost:9090/AutomoveisJsp/Confirmacaocliente",
+          dataType: "json",
+          data: {cpf:JSON.stringify(cpf)},
+  
+          success: function (data) {
+              callbackfn(data)
+          },
+          error: function (textStatus, errorThrown) {
+              callbackfn("Error getting the data")
+          }
+
+      });
+   } 
+
+
+   function Callback(data)
+   {
+     alert(data.retorno);
+      
+     if(data.retorno = true){
+     habilitaBotao();
+   
+     }else{
+    	 
+     }
+     }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // function confirmacpf(){
+	//   var cpf =$("#cpfField").val();
 	   
 	  
 	  // $.ajax({url:"http://localhost:9090/AutomoveisJsp/Confirmacaocliente?cpf="+cpf
@@ -24,18 +69,19 @@
 	
 	   
        //}
-  //alert("entrei");
+ // alert("entrei");
 	   
-  $.getJSON("http://localhost:9090/AutomoveisJsp/Confirmacaocliente", 
-		     {"cpf": cpf}).done(function (data) {
-		    	 console.log(data);
-		     });
-  }
+  //$.getJSON("http://localhost:9090/AutomoveisJsp/Confirmacaocliente&callback=?", 
+	//	     {"cpf": cpf}).done(function (data) {
+		//    	 alert(data);
+		    	 
+		  //  	 console.log("sadasdasdasd");
+		    // });
+  //}
   </script>
   
   <script type="text/javascript">
   function habilitaBotao(){
-	  alert($("#vendaconcluida").prop("disabled"));
 	  $("#vendaconcluida").prop("disabled", false);
 	   }
   
@@ -182,7 +228,7 @@ String nome = request.getParameter("nome");
     <p>
          <strong>CPF:</strong>    
         <input name="cpf" type="text" id="cpfField" size="12" value="<%=(cpf==null)?"":cpf%> "/>     </p>
-        <input  id="confirmacadastro" type="button" onClick="confirmacpf()" name="bt1" value="Confirmar Cadastro" >
+        <input  id="confirmacadastro" type="button" onClick="confirmacpf(Callback)" name="bt1" value="Confirmar Cadastro" >
         <button id="vendaconcluida" onclick="location.href='Vendaconfirmada.jsp'" disabled>Confirmar venda</button>
         <input  id="habilitar" type="button" onClick='habilitaBotao()'> 
         
