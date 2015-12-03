@@ -75,10 +75,11 @@ public class DaoCliente {
 	   }
 
 
-
+    
 	public static String consultacpf(String cpf) {
 		ResultSet set2 = null;
 		String nome = null;
+		
 		try{
 			set2=MysqlConnect.db.query("select id, cpf, nome, rg, telefone, rua, bairro, numero, cidade, nascimento, email " +  
 "from cliente where cpf="+cpf);
@@ -94,6 +95,13 @@ public class DaoCliente {
 	 
     
   }  
+		System.out.println(nome);
 		return nome;
 }
+	
+		
+	
+	
+	
+	
 }

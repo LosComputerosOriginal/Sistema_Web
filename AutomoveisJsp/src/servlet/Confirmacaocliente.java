@@ -32,21 +32,60 @@ public class Confirmacaocliente extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 //		
 //		
-//		String cpf = request.getParameter("cpf");
-//	
-//	System.out.println(cpf);
+		String cpf = request.getParameter("cpf");
+		cpf=cpf.replace(" ", "");
+		cpf=cpf.replace("\"", "");
+ 
+	//System.out.println(cpf);
+	
 //	
 //	  response.setContentType("text/html;charset=UTF-8");
 //      response.getWriter().write("Success Data");
-
+        if(cpf.equals("")){
+        	PrintWriter out = response.getWriter();
+    		
+    		String json = "{\"retorno\" : false}";
+    		
+    		out.println(json);
+        	
+        }else{
+        	String nome = DaoCliente.consultacpf(cpf);
+        	System.out.println(nome);
+        	if(nome==null){
+    
+PrintWriter out = response.getWriter();
+        		
+        		String json = "{\"retorno\" : false}";
+        		
+        		out.println(json);
+    
+        	}else {
+        		PrintWriter out = response.getWriter();
+        		
+        		String json = "{\"retorno\" : true}";
+        		
+        		out.println(json);
+        		
+        	}
+        }
 	
 		
-		PrintWriter out = response.getWriter();
 		
-		String json = "{\"retorno\" : true}";
-		
-		out.println(json);
 	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		/*if (cpf.equals("")) {
 			System.out.println("Digite um cpf");
 		} else if (cpf.equals(request.getParameter("cpf"))) {

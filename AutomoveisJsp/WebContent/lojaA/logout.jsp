@@ -26,7 +26,7 @@
 
 
 <a href="${pageContext.request.contextPath}/logout">Sim</a>
-<a href="logado2.jsp">Nao</a>
+<a href="logado2.jsp"> Nao </a>
 </div>
 </body>
 </html>

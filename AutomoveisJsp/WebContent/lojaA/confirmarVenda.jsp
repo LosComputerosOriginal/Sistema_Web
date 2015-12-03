@@ -13,7 +13,7 @@
   <script type="text/javascript">
   function confirmacpf(callbackfn) {
 	  var cpf = $("#cpfField").val();
-	  alert(cpf);
+	  
       var Success = false;
       $.ajax({
     	  
@@ -26,7 +26,7 @@
               callbackfn(data)
           },
           error: function (textStatus, errorThrown) {
-              callbackfn("Error getting the data")
+              callbackfn("Cpf invalido")
           }
 
       });
@@ -35,58 +35,49 @@
 
    function Callback(data)
    {
-     alert(data.retorno);
-      
-     if(data.retorno = true){
+     //alert(data.retorno);
+      console.log(data.retorno);
+     if(data.retorno == true){
      habilitaBotao();
+     }else if(data.retorno == false){
+    	 alert(data);
+     }
    
-     }else{
-    	 
-     }
-     }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  // function confirmacpf(){
-	//   var cpf =$("#cpfField").val();
-	   
-	  
-	  // $.ajax({url:"http://localhost:9090/AutomoveisJsp/Confirmacaocliente?cpf="+cpf
-	 
-	   
-			   
-			   
-		//   })
-	
-	   
-       //}
- // alert("entrei");
-	   
-  //$.getJSON("http://localhost:9090/AutomoveisJsp/Confirmacaocliente&callback=?", 
-	//	     {"cpf": cpf}).done(function (data) {
-		//    	 alert(data);
-		    	 
-		  //  	 console.log("sadasdasdasd");
-		    // });
-  //}
+     
+   }	 
   </script>
   
   <script type="text/javascript">
   function habilitaBotao(){
 	  $("#vendaconcluida").prop("disabled", false);
 	   }
+  </script>
   
-	   
   
+  
+  <script type="text/javascript">
+  function Confirmarvenda(Callbackfn) {
+	  var cpf = $("#cpfField").val();
+	  var  CodCarro = $("#idVeiculo").val();
+	  alert(CodCarro);
+	  
+      var Success = false;
+      $.ajax({
+    	  
+          type: "POST",
+          url: "http://localhost:9090/AutomoveisJsp/confirmarvenda",
+          dataType: "json",
+          data: {cpf:JSON.stringify(cpf), CodCarro:JSON.stringify(CodCarro)},
+         
+          success: function (data) {
+              callbackfn(data)
+          },
+          error: function (textStatus, errorThrown) {
+              callbackfn("Cpf invalido")
+          }
+
+      });
+   } 
   </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">  
 </head>  
@@ -153,7 +144,7 @@
           %>  
          <tr>  
        <td width=30>  
-               <%out.print(temp.getString("id"));%>  
+               <%out.print(temp.getString("id"));%><input type="hidden" name="idVeiculo" id="idVeiculo" value="<%out.print(temp.getString("id"));%>"  />
          </td> 
           <td width=200>  
                <%out.print(temp.getString("nome_modelo"));%>  
@@ -218,7 +209,7 @@
       
  
 </form>  
-<form name="cadastro" method="post" action="usuarioverificado.do">  
+<form name="cadastro" method="post" >  
 <%
 String cpf = request.getParameter("cpf");
 String status = request.getParameter("status");
@@ -228,8 +219,8 @@ String nome = request.getParameter("nome");
     <p>
          <strong>CPF:</strong>    
         <input name="cpf" type="text" id="cpfField" size="12" value="<%=(cpf==null)?"":cpf%> "/>     </p>
-        <input  id="confirmacadastro" type="button" onClick="confirmacpf(Callback)" name="bt1" value="Confirmar Cadastro" >
-        <button id="vendaconcluida" onclick="location.href='Vendaconfirmada.jsp'" disabled>Confirmar venda</button>
+        <input  id="confirmacadastro" type="button" onClick="confirmacpf(Callback)" name="bt1" value="Confirmar Cadastro" />
+        <input id="vendaconcluida" type="button" onClick="Confirmarvenda(Callback)" name="bt2" disabled value="Confirmar venda" />
         <input  id="habilitar" type="button" onClick='habilitaBotao()'> 
         
    
